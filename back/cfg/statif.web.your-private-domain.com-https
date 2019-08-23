@@ -1,0 +1,46 @@
+<VirtualHost *:443>
+	ServerName statif.web.your-private-domain.com
+	ServerAlias statif.web.your-private-domain.com
+
+	DocumentRoot /var/www/frontend
+
+	LogLevel info
+	LogFormat "%h %l %u %t \"%r\" %>s %O %D \"%{Referer}i\" \"%{User-Agent}i\"" perflog
+
+	ErrorLog "/var/log/cornetto/error-cornetto.log"
+	CustomLog "/var/log/cornetto/access-cornetto.log" perflog
+
+	AliasMatch "^/create(.*)$" "/var/www/frontend/index.html"
+	AliasMatch "^/list(.*)$" "/var/www/frontend/index.html"
+
+	WSGIDaemonProcess cornetto user=www-data group=www-data threads=5 lang=fr_FR.UTF-8 python-home=/opt/cornetto/venv
+	WSGIScriptAlias /api /opt/cornetto/wsgi.py/api
+
+	SSLEngine On
+	....
+	YOUR SSL CONF HERE
+	....
+
+	<Directory /opt/cornetto>
+	  SSLRequireSSL
+
+	  WSGIProcessGroup cornetto
+	  WSGIApplicationGroup %{GLOBAL}
+
+	  RequestHeader unset X-Forwarded-User
+	  RequestHeader set X-Forwarded-User "%{REMOTE_USER}s"
+	  RequestHeader set REMOTE_USER "%{REMOTE_USER}s"
+	  Options FollowSymLinks MultiViews
+	</Directory>
+
+	<Directory /var/www/frontend>
+	  SSLRequireSSL
+
+	  Require valid-user
+
+	  RequestHeader unset X-Forwarded-User
+	  RequestHeader set X-Forwarded-User "%{REMOTE_USER}s"
+	  RequestHeader set REMOTE_USER "%{REMOTE_USER}s"
+	</Directory>
+
+</VirtualHost>

@@ -1,0 +1,62 @@
+{
+  "name": "cornetto",
+  "version": "2.0.1",
+  "private": true,
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "@devexpress/dx-core": "^1.7.0",
+    "@devexpress/dx-grid-core": "^1.7.0",
+    "@devexpress/dx-react-core": "^1.7.0",
+    "@devexpress/dx-react-grid": "^1.7.0",
+    "@devexpress/dx-react-grid-material-ui": "^1.7.0",
+    "@material-ui/core": "^3.0.1",
+    "@material-ui/icons": "^3.0.1",
+    "connected-react-router": "^4.4.1",
+    "immutable": "^3.8.2",
+    "json2csv": "^4.3.1",
+    "moment": "^2.22.2",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-redux": "^5.0.7",
+    "react-redux-i18n": "^1.9.3",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-router-redux": "^4.0.8",
+    "react-scripts": "^2.1.1",
+    "redux": "^4.0.0",
+    "redux-form": "^7.4.2",
+    "redux-form-material-ui": "^4.3.4",
+    "redux-immutable": "^4.0.0",
+    "redux-persist": "^5.10.0",
+    "redux-persist-transform-compress": "^4.2.0",
+    "redux-persist-transform-encrypt": "^2.0.1",
+    "redux-persist-transform-immutable": "^5.0.0",
+    "redux-saga": "^0.16.0",
+    "redux-thunk": "^2.3.0",
+    "whatwg-fetch": "^3.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "proxy": "http://localhost:8000",
+  "devDependencies": {
+    "eslint": "^5.8.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-config-standard-react": "^7.0.2",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-standard": "^4.0.0"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

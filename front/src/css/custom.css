@@ -1,0 +1,603 @@
+/*
+ Cornetto
+
+ Copyright (C) 2018–2019 ANSSI
+ Contributors:
+ 2018–2019 Paul Fayoux paul.fayoux@ssi.gouv.fr
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ GNU General Public License for more details.
+ You should have received a copy of the GNU General Public License
+ */
+/****** Summary **********************************
+
+1. global styles
+2. header
+3. main
+3.1 stepper
+4. dialog information popup
+5. footer
+6. view result of the logs
+6.1 left panel
+6.2 right panel
+7. Error handling
+8. media queries
+
+Color palette:
+header font-color: #fff
+header hover: rgba(0, 0, 0, 0.15)
+stepper
+bgc: #fff
+color: #fff
+stepper button bgc: #284370
+stepper svg
+fill: #0071BB
+fill validate: #165c25
+label & color: #0071BB
+paragraph
+color: #000
+opacity: 0.8
+dialog color: rgba(0, 0, 0, 0.8)
+footer
+bgc: #333
+color: #000
+***********************************************/
+
+/************* 1. Global styles **************/
+
+@font-face {
+  font-family: 'Roboto';
+  src: url(../fonts/Roboto-Medium.ttf);
+}
+
+html {
+  height: 100%
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1em;
+  font-weight: normal;
+  width: 100%;
+  min-height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  background-image: url('../imgs/background-cornetto-2560-1708.jpg');
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+}
+
+.wait {
+  cursor: wait !important;
+}
+
+
+/*********** 2. HEADER *****************/
+
+header {
+  color: #fff;
+  height: 82px;
+  top: 0;
+}
+
+div.toolbar {
+  padding-left: 28px;
+  padding-right: 2px;
+}
+
+.websiteLink {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  text-transform: uppercase;
+  align-self: center;
+  padding: 0 10px;
+}
+
+.websiteLink:hover {
+  background-color: rgba(0, 0, 0, 0.15);
+  padding: 13px 10px;
+}
+
+#app .tab span {
+  font-size: 18px;
+  min-width: 100px;
+}
+
+div .tab:hover {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+div .MuiTab-label-24 {
+  font-size: 18px;
+}
+
+header .tabs>div>div>span {
+  height: 3px;
+  background-color: #fff;
+}
+
+.tabs {
+  margin-left: auto;
+}
+
+
+/*************** 3. MAIN ****************/
+
+
+main {
+  margin-bottom:8em;
+}
+
+
+/*************** 3.1 Stepper ****************/
+
+.stepper-wrapper {
+  max-width: 390px;
+  background-color: #fff;
+  padding: 30px 0 35px 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div .stepper {
+  margin-left: auto;
+  margin-right: auto;
+  width: 330px;
+  background-color: inherit;
+  padding: 0;
+}
+
+div .step {
+  color: rgba(0, 0, 0, 0.87) !important;
+  padding: 0;
+}
+.step span span span {
+  color: rgba(0, 0, 0, 0.87) !important;
+  opacity: 1;
+}
+
+/***  small form with only 2 rows **/
+
+.form-header,
+.form-buttons {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+
+/** target only the small form on /statification view **/
+
+.step-block .statif-form {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 170px;
+  margin-bottom: 22px;
+}
+
+.step-block .form-buttons {
+  flex-direction: column;
+  display: flex;
+}
+
+.statificationform_header > div{
+  margin-bottom: 20px !important;
+}
+
+.statificationform-buttons {
+  margin-top: 3em !important;
+}
+
+div .button-next {
+  background-color: #284370;
+  color: #fff;
+  height: 60px;
+}
+
+.step-block .button-cancel {
+  height: 35px;
+  width: 40%;
+  margin: 15px auto 0 auto;
+}
+
+.step-block .restart {
+  height: 60px;
+}
+
+/******** Stepper svg *****/
+
+.step svg {
+  height: 70px;
+  width: 70px;
+  fill: #0071BB !important;
+  opacity: 0.25;
+}
+
+.step div:nth-child(2) {
+  display: none;
+}
+
+.step-active svg {
+  height: 70px;
+  width: 70px;
+  fill: #0071BB !important;
+  opacity: 1;
+}
+
+.step-validate svg {
+  fill: #165c25 !important;
+  opacity: 1;
+}
+
+
+.form-header>div>div>label {
+  color: #0071BB;
+}
+
+
+/********** Paragraph part ******/
+
+.text {
+  color: #000;
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  line-height: 1.5;
+  min-height: 170px;
+  width: 80%;
+  padding: 0 2em;
+}
+
+
+/************ Progress Bar ******/
+
+div .linearProgress {
+  height: 15px;
+  margin-bottom: 30px;
+  opacity: 1;
+}
+
+.statificationform-loading-parent {
+  text-align: center;
+}
+
+
+/***************** 4. Dialog popup ***************/
+
+.dialog .dialog-text {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.dialog .button-next {
+  height: 36px;
+}
+
+
+/****************** 5. FOOTER ******************/
+
+footer {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  padding: 25px 0;
+  color: #fff;
+  background-color: #333;
+  z-index: -1;
+}
+
+footer .bold {
+  font-weight: bold;
+}
+
+
+/****************** 6. View /list - Result of the logs ******************/
+
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 20px;
+  color: #284370;
+}
+
+.log-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.log-content {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  overflow: auto;
+}
+
+.close-page {
+  align-items: flex-end;
+}
+
+
+/******************* 6.1 Left panel ****************/
+
+#app .statificationhome_leftpane {
+  background-color: rgba(0,0,0,0);
+}
+
+.statificationhome_leftpane tr:hover {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.statificationlist_short tr:hover{
+  background-color: #d9d9d9 !important;
+}
+
+.selectedRow {
+  cursor: pointer;
+  background-color: #cde0ed !important;
+}
+
+.unselectedRow {
+  cursor: pointer;
+  background-color: rgba(0,0,0,0);
+}
+
+.listDrowpdownButton {
+  margin: auto !important;
+  display: block !important;
+  background-color: #284370;
+  color: #fff
+}
+
+/*******************6.2  Right panel *****************/
+
+#app .statificationhome_rightpane {
+  background-color: rgba(0,0,0,0);
+}
+
+.info_page .display {
+  display: none;
+}
+
+.info_page .statificationform p {
+  visibility: hidden;
+}
+
+.button-bar {
+  text-align: right;
+  padding: 10px;
+}
+
+.button-bar .button-next {
+  margin-left: 5px;
+  height: 36px;
+}
+
+.button-bar .button-next:hover {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+.accordeon:hover{
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.accordeon_closed{
+  /* background-color: rgba(0, 0, 0, 0.15); */
+}
+
+.accordeon_open{
+  background-color: #cde0ed;
+}
+
+.collapse_title {
+  display: inline;
+  padding-left: 0px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.collapse_title div {
+  display: inline;
+}
+
+.collapse_closed {
+  padding-right: 16px;
+  transform: rotate(0deg);
+}
+
+.collapse_open {
+  padding-right: 16px;
+  transform: rotate(180deg);
+}
+
+.collapse_grow {
+  flex: 1 1 auto;
+}
+
+
+/**************** 7. ERROR handling - prevent clicking elsewhere **************/
+
+.blur {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100vmax;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+
+/**
+ * Error message Style
+ */
+
+.wrapper-error-message {
+  position: relative;
+  width: 330px;
+  height: 70px;
+}
+
+.error-message {
+  position: relative;
+  width: auto;
+  display: inline-flex;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+
+.error-icon {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.error-button {
+  display: inline-flex;
+}
+
+
+/***************** 8. media queries ****************************/
+
+@media screen and (max-width:360px) {
+
+  footer {
+    padding: 15px 0;
+    position: relative;
+  }
+}
+@media screen and (min-width:320px)and (max-width:600px) {
+  header{
+    height: 70px;
+  }
+  .toolbar {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .websiteLink{
+    display: none;
+    visibility: hidden;
+  }
+  #app .tab span {
+    font-size: 14px;
+    min-width: 100px;
+  }
+
+  .statificationform-buttons{
+    margin-top: 0;
+  }
+}
+
+
+/* pop up messages  */
+
+:text-color {
+  --text-color-info: #5293d8;
+  --text-color-success: #1fe977;
+  --text-color-warning: #f78a46;
+  --text-color-error: #c00;
+}
+
+
+/* vérifier le besoin et refactorer avec les appels actuels */
+
+.float {
+  float: right;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: absolute;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.inherit {
+  height: inherit;
+  width: inherit;
+}
+
+select:disabled {
+  color: #000;
+}
+
+.multiselect>div>div {
+  color: #000;
+}
+
+.scroll {
+  padding-left: 4px;
+  position: relative;
+  height: calc(100vh - 64px);
+  overflow-y: scroll;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.placeholder_div {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  color: rgb(202, 202, 202);
+}
+
+path.recharts-rectangle.recharts-tooltip-cursor {
+  opacity: 0.5 !important;
+}
+
+.pop {
+  border-radius: 8px;
+  margin-left: 5px;
+  padding: 2px 7px;
+}
+
+.statusElement {
+  border-radius: 8px;
+  margin:auto;
+  padding: 2px 7px;
+}
+
+img.logo {
+  width: 4%;
+  margin-top: 5px;
+}

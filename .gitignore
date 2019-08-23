@@ -1,0 +1,60 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# ignore files and folders linked to Python or Pycharm
+.idea/
+__pycache__/
++__pycache__/
++__pycache__/*
+**/*.py[cod]
+
+# ignore le dossier de cache de mypy
+.mypy_cache/
+
+# ignore files and folder create by cornetto
+**/cornetto.db
+*.pid.data*
+*crawlerProgressCounterFile.txt*
+**/log
+**/.lockRoute
+
+# ignore files and folder linked to egg build
+lib/
+lib64/
+eggs
+.eggs/
+*.egg-info
+*.egg-info/
+build
+build
+dist
+
+# ignore virtualenv
+venv
+
+# dependencies
+node_modules
+
+# testing
+/coverage
+
+# production
+build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ignore log
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ignore .tar
+*.tar
+
+# ignore script
+script_send_front.sh

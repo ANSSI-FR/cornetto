@@ -1,0 +1,7 @@
+<VirtualHost *:80>
+  ServerName statif.web.your-private-domain.com
+  ServerAlias statif.web.your-private-domain.com
+
+  Redirect permanent / https://statif.web.your-private-domain.com/
+
+</VirtualHost>
