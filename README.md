@@ -8,7 +8,7 @@
   </h1>
   Cool Open-Source Robust Nice and Easy Tightening Tool Online
   <br /><br />
-    <h4>Free, open source statification tool for any website.</h4>
+    <h4>Free, open source tool to create and manage static version for any website.</h4>
   <h5>Available for Linux.</h5>
 </div>
 
