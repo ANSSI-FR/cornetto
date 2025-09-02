@@ -12,6 +12,8 @@
   <h5>Available for Linux.</h5>
 </div>
 
+**This repository is not updated anymore and has been archived in September 2025**
+
 ---
 
 ## Table of Contents <a name='table-of-contents'></a>
